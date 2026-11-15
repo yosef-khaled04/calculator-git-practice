@@ -148,3 +148,27 @@ document.querySelectorAll("[data-action]").forEach(function (btn) {
 });
 
 updateDisplay();
+
+// دعم لوحة المفاتيح
+document.addEventListener("keydown", function (e) {
+    if (e.key >= "0" && e.key <= "9") {
+        appendNumber(e.key);
+    } else if (e.key === ".") {
+        appendDecimal();
+    } else if (e.key === "+") {
+        chooseOperator("+");
+    } else if (e.key === "-") {
+        chooseOperator("−");
+    } else if (e.key === "*") {
+        chooseOperator("×");
+    } else if (e.key === "/") {
+        e.preventDefault();
+        chooseOperator("÷");
+    } else if (e.key === "Enter" || e.key === "=") {
+        calculate();
+    } else if (e.key === "Backspace") {
+        deleteLast();
+    } else if (e.key === "Escape") {
+        clearAll();
+    }
+});
